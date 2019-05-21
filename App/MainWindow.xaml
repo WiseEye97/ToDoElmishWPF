@@ -3,16 +3,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Elmish Counter" Height="300" Width="500">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Count}" TextAlignment="Center" FontSize="18" Grid.Row="0" />
-        <Button Command="{Binding Increment}" FontSize="18" Content="Increment" Grid.Row="1" />
-        <Button Command="{Binding Decrement}" FontSize="18" Content="Decrement" Grid.Row="2" />
-        <Button Command="{Binding IncrementDelayed}" FontSize="18" Content="Increment (Delayed)" Grid.Row="3" />
-    </Grid>
+    <StackPanel>
+        <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
+            <Label>New Item:</Label>
+            <TextBox Width="400" Text="{Binding currentBuffer}"></TextBox>
+            <Button Command="{Binding AddItem}" Content="Add"></Button>
+        </StackPanel>
+        <ListView Name="Gowno" ItemsSource="{Binding items}" Margin="0,5,0,0">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="400" Text="{Binding Content}"></TextBlock>
+                        <Button Command="{Binding Delete}" Content="Delete"></Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+    </StackPanel>
 </Window>
